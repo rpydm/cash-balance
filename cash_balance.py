@@ -1,5 +1,6 @@
 class CashBalance():
   def manage(payed, change):
+    # お手持ちの現金の各枚数を入力してください。
     cash = {
         "10000" : 4, "5000" : 1, "1000" : 4
       , "500" : 12, "100" : 34, "50" : 24
@@ -35,8 +36,11 @@ class CashBalance():
     change = payed - price
     return change
 
+  # ものサービスの金額を入力してください。
   payed = calculate(0)
+  # お釣りを求めます。expenseにものサービスの金額, 支払った金額を入力してください。
   change = calculate(expense(0, 0))
   manage(payed, change)
 
 CashBalance()
+# 実行しても manege().cash{} の値は変更されません。

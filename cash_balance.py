@@ -1,5 +1,5 @@
 class CashBalance():
-  def manage(payed, change):
+  def manage(spend, change):
     # お手持ちの現金の各枚数を入力してください。
     cash = {
         "10000" : 4, "5000" : 1, "1000" : 4
@@ -8,17 +8,17 @@ class CashBalance():
     }
     cash_balance = 0
     for x in cash:
-      cash[x] = cash[x] - payed[x]
+      cash[x] = cash[x] - spend[x]
       cash[x] = cash[x] + change[x]
       print(x + '円: ' + str(cash[x]) + '枚')
       cash_balance = cash_balance + int(x) * cash[x]
     print('現金残高: ' + str(cash_balance) + '円')
 
-  def calculate(spend):
-    bill10000 = spend // 10000
-    bill5000 = spend % 10000 // 5000
-    bill1000 = spend % 5000 // 1000
-    coin = spend % 1000
+  def calc_num_of_each_cash(amount):
+    bill10000 = amount // 10000
+    bill5000 = amount % 10000 // 5000
+    bill1000 = amount % 5000 // 1000
+    coin = amount % 1000
     coin500 = coin // 500
     coin100 = coin % 500 // 100
     coin50 = coin % 100 // 50
@@ -32,15 +32,18 @@ class CashBalance():
     }
     return cash
 
-  def expense(price, payed):
-    change = payed - price
+  def expense(price, pay_amount):
+    change = pay_amount - price
     return change
 
-  # ものサービスの金額を入力してください。
-  payed = calculate(0)
-  # お釣りを求めます。expenseにものサービスの金額, 支払った金額を入力してください。
-  change = calculate(expense(0, 0))
-  manage(payed, change)
+  # ものサービスの金額を指定してください。
+  price = 0
+  spend = calc_num_of_each_cash(price)
+  # お釣りを貰う前の支払額を指定してください。
+  pay_amount = 0
+  change = calc_num_of_each_cash(expense(price, pay_amount))
+  manage(spend, change)
 
 CashBalance()
-# 実行しても manege().cash{} の値は変更されません。
+# 実行後、manege()の配列cashの値を標準出力を見て変更してください。
+# ATMなどで現金を引き出した場合も直接そこの値を変更してください。

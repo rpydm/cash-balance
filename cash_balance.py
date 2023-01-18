@@ -2,9 +2,9 @@ class CashBalance():
   def manage(spend, change):
     # お手持ちの現金の各枚数を入力してください。
     cash = {
-        "10000" : 4, "5000" : 1, "1000" : 4
-      , "500" : 12, "100" : 34, "50" : 24
-      , "10" : 23, "5" : 20, "1" : 36
+        "10000" : 3, "5000" : 1, "1000" : 13
+      , "500" : 12, "100" : 36, "50" : 24
+      , "10" : 24, "5" : 20, "1" : 36
     }
     cash_balance = 0
     for x in cash:
@@ -38,9 +38,9 @@ class CashBalance():
 
   # ものサービスの金額を指定してください。
   price = 0
-  spend = calc_num_of_each_cash(price)
   # お釣りを貰う前の支払額を指定してください。
   pay_amount = 0
+  spend = calc_num_of_each_cash(pay_amount)
   change = calc_num_of_each_cash(expense(price, pay_amount))
   manage(spend, change)
 
